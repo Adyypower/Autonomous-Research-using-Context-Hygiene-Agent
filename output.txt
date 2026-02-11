@@ -1,0 +1,74 @@
+﻿python.exe : Both 
+GOOGLE_API_KEY and 
+GEMINI_API_KEY are 
+set. Using 
+GOOGLE_API_KEY.
+At line:1 char:1
++ & "c:\Autonomus Pla
+nner\venv\Scripts\pyt
+hon.exe" 
+"c:\Autonomus Planne 
+...
++ ~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~
+    + CategoryInfo   
+           : NotSpe  
+  cified: (Both GO   
+ OGLE_API...GOOGL    
+E_API_KEY.:Strin    
+g) [], RemoteExc    
+eption
+    + FullyQualified 
+   ErrorId : Native  
+  CommandError
+ 
+Both GOOGLE_API_KEY 
+and GEMINI_API_KEY 
+are set. Using 
+GOOGLE_API_KEY.
+Both GOOGLE_API_KEY 
+and GEMINI_API_KEY 
+are set. Using 
+GOOGLE_API_KEY.
+Traceback (most 
+recent call last):
+  File "c:\Autonomus 
+Planner\antigravity_a
+gent\main.py", line 
+8, in <module>
+    initial_state = 
+AgentState(
+                    
+^^^^^^^^^^^
+  File "C:\Autonomus 
+Planner\venv\Lib\site
+-packages\pydantic\ma
+in.py", line 250, in 
+__init__
+    validated_self = 
+self.__pydantic_valid
+ator__.validate_pytho
+n(data, 
+self_instance=self)
+                     
+^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^
+^^^^^^
+pydantic_core._pydant
+ic_core.ValidationErr
+or: 1 validation 
+error for AgentState
+user_query
+  Field required 
+[type=missing, input_
+value={'user_goal': 
+'Research i...entic 
+AI in healthcare'}, 
+input_type=dict]
+    For further 
+information visit htt
+ps://errors.pydantic.
+dev/2.12/v/missing

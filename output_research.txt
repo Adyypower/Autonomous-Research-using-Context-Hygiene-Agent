@@ -1,0 +1,158 @@
+﻿python.exe : Both 
+GOOGLE_API_KEY and 
+GEMINI_API_KEY are set. 
+Using GOOGLE_API_KEY.
+At line:1 char:1
++ & "c:\Autonomus Planner\
+venv\Scripts\python.exe" 
+"c:\Autonomus Planne ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo        
+      : NotSpe    cified: 
+(Both GO    
+OGLE_API...GOOGL    
+E_API_KEY.:Strin    g) 
+[], RemoteExc    eption
+    + FullyQualified    
+ErrorId : Native    
+CommandError
+ 
+Both GOOGLE_API_KEY and 
+GEMINI_API_KEY are set. 
+Using GOOGLE_API_KEY.
+Both GOOGLE_API_KEY and 
+GEMINI_API_KEY are set. 
+Using GOOGLE_API_KEY.
+Traceback (most recent 
+call last):
+  File "c:\Autonomus Plann
+er\antigravity_agent\main.
+py", line 12, in <module>
+    result = graph.invoke(
+initial_state)
+             ^^^^^^^^^^^^^
+^^^^^^^^^^^^^^
+  File "C:\Autonomus Plann
+er\venv\Lib\site-packages\
+langgraph\pregel\main.py",
+ line 3071, in invoke
+    for chunk in 
+self.stream(
+  File "C:\Autonomus Plann
+er\venv\Lib\site-packages\
+langgraph\pregel\main.py",
+ line 2646, in stream
+    for _ in runner.tick(
+  File "C:\Autonomus Plann
+er\venv\Lib\site-packages\
+langgraph\pregel\_runner.p
+y", line 167, in tick
+    run_with_retry(
+  File "C:\Autonomus Plann
+er\venv\Lib\site-packages\
+langgraph\pregel\_retry.py
+", line 42, in 
+run_with_retry
+    return task.proc.invok
+e(task.input, config)
+           ^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Autonomus Plann
+er\venv\Lib\site-packages\
+langgraph\_internal\_runna
+ble.py", line 656, in 
+invoke
+    input = 
+context.run(step.invoke, 
+input, config, **kwargs)
+            ^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^
+  File "C:\Autonomus Plann
+er\venv\Lib\site-packages\
+langgraph\_internal\_runna
+ble.py", line 400, in 
+invoke
+    ret = 
+self.func(*args, **kwargs)
+          
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Autonomus Plann
+er\antigravity_agent\nodes
+\research_node.py", line 
+6, in research_node
+    result = 
+search_web(step)
+             
+^^^^^^^^^^^^^^^^
+  File "c:\Autonomus Plann
+er\antigravity_agent\tools
+\search_tool.py", line 7, 
+in search_web
+    return 
+search.run(query)
+           
+^^^^^^^^^^^^^^^^^
+  File "C:\Autonomus Plann
+er\venv\Lib\site-packages\
+langchain_core\tools\base.
+py", line 1000, in run
+    raise error_to_raise
+  File "C:\Autonomus Plann
+er\venv\Lib\site-packages\
+langchain_core\tools\base.
+py", line 966, in run
+    response = 
+context.run(self._run, 
+*tool_args, **tool_kwargs)
+               ^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^
+  File "C:\Autonomus Plann
+er\venv\Lib\site-packages\
+langchain_community\tools\
+ddg_search\tool.py", line 
+74, in _run
+    return self.api_wrappe
+r.run(query)
+           ^^^^^^^^^^^^^^^
+^^^^^^^^^^^^
+  File "C:\Autonomus Plann
+er\venv\Lib\site-packages\
+langchain_community\utilit
+ies\duckduckgo_search.py",
+ line 114, in run
+    results = 
+self._ddgs_text(query)
+              
+^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Autonomus Plann
+er\venv\Lib\site-packages\
+langchain_community\utilit
+ies\duckduckgo_search.py",
+ line 64, in _ddgs_text
+    ddgs_gen = ddgs.text(
+               ^^^^^^^^^^
+  File "C:\Autonomus Plann
+er\venv\Lib\site-packages\
+ddgs\ddgs.py", line 218, 
+in text
+    return 
+self._search("text", 
+query, **kwargs)
+           ^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Autonomus Plann
+er\venv\Lib\site-packages\
+ddgs\ddgs.py", line 163, 
+in _search
+    raise 
+DDGSException(msg)
+ddgs.exceptions.DDGSExcept
+ion: query is mandatory.
+During task with name 
+'research' and id '73bfe34
+c-73b0-1ec6-507d-91801cfc1
+d3d'
