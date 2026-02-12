@@ -1,15 +1,20 @@
-from pydantic import BaseModel
-from typing import List , Optional
+from pydantic import BaseModel, Field
+from typing import List, Optional, Dict, Any
 
 class AgentState(BaseModel):
-    user_goal: str
-    research_plan: List[str] = []
-    tool_results: List[str] = []
-    working_memory: List[str] = []
-    compressed_context: Optional[str] = None
-    evaluation_score: float = 0.0
-    reflection_notes: Optional[str] = None
-    confidence_score: float = 0.0
-    iteration_count: int = 0
 
-    
+    user_goal: str
+
+    research_plan: List[str] = Field(default_factory=list)
+    tool_results: List[str] = Field(default_factory=list)
+    working_memory: List[str] = Field(default_factory=list)
+
+    compressed_context: Optional[Dict[str, Any]] = None
+
+    evaluation_score: float = 0.0
+    confidence_score: float = 0.0
+
+    reflection_notes: Optional[Dict[str, Any]] = None
+
+    iteration_count: int = 0
+    api_calls_used: int = 0

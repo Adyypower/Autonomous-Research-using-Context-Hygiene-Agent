@@ -29,7 +29,7 @@ def build_graph():
         "reflect",
         router_node,
         {
-            "replan": "planner",
+            "research": "research",
             "end": END
         }
     )
