@@ -1,5 +1,6 @@
 from tools.search_tool import search_web
 from state.agent_state import AgentState
+from config import memory_manager
 
 def research_node(state: AgentState):
 
@@ -20,4 +21,10 @@ def research_node(state: AgentState):
     state.tool_results = collected
     state.working_memory.extend(collected)
 
+    # long term memory storage
+    memory_manager.store_raw_results(
+        state.tool_results,
+        query=str(state.research_plan),
+        iteration=state.iteration_count
+    )
     return state

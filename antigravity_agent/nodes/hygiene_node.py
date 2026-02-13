@@ -5,6 +5,7 @@ from schema.hygiene_schema import HygieneSchema
 from prompts.hygiene_prompt import HYGIENE_PROMPT
 from config import MODEL_NAME
 from state.agent_state import AgentState
+from config import memory_manager
 
 llm = ChatGoogleGenerativeAI(
     model=MODEL_NAME,
@@ -24,7 +25,10 @@ def hygiene_node(state: AgentState):
     raw_content = raw_content[:8000]
 
     # Get previous context safely
-    previous = str(state.compressed_context) if state.compressed_context else "None"
+    if state.iteration_count > 0 and state.compressed_context:
+        previous = str(state.compressed_context)
+    else:
+        previous = "None"
 
     prompt = HYGIENE_PROMPT.format(
         user_goal=state.user_goal,
@@ -42,10 +46,15 @@ def hygiene_node(state: AgentState):
     compressed = response.model_dump()
 
     state.compressed_context = compressed
+    memory_manager.store_compressed_context(
+        state.compressed_context,
+        iteration=state.iteration_count
+    )
 
     # Replace working memory with compressed context only
-    state.working_memory = [str(compressed)]
-
+    import json
+    state.working_memory = [json.dumps(compressed)]
+    state.tool_results = []
     print("Context compressed successfully")
 
     return state

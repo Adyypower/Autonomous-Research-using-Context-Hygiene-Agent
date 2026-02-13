@@ -37,7 +37,7 @@ def router_node(state: AgentState):
     # --- 4️⃣ Refinement Path (Surgical Mode) ---
     if reflection_decision == "refine" and refinement_queries:
         print("Continuing to refinement.")
-        return "research"
+        return "retrieve"
 
     # --- 5️⃣ Fallback ---
     print("Fallback to ending process.")

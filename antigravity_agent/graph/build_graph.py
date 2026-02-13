@@ -7,6 +7,7 @@ from nodes.hygiene_node import hygiene_node
 from nodes.evaluator_node import evaluator_node
 from nodes.reflection_node import reflection_node
 from nodes.router_node import router_node
+from nodes.retrieval_node import retrieval_node
 
 def build_graph():
 
@@ -17,6 +18,7 @@ def build_graph():
     workflow.add_node("hygiene", hygiene_node)
     workflow.add_node("evaluate", evaluator_node)
     workflow.add_node("reflect", reflection_node)
+    workflow.add_node("retrieve", retrieval_node)
 
     workflow.set_entry_point("planner")
 
@@ -24,12 +26,13 @@ def build_graph():
     workflow.add_edge("research", "hygiene")
     workflow.add_edge("hygiene", "evaluate")
     workflow.add_edge("evaluate", "reflect")
+    workflow.add_edge("retrieve", "research")
 
     workflow.add_conditional_edges(
         "reflect",
         router_node,
         {
-            "research": "research",
+            "retrieve": "retrieve",
             "end": END
         }
     )
