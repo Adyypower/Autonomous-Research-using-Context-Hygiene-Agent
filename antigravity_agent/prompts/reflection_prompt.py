@@ -14,12 +14,14 @@ STRICT RULES:
 - Keep reasoning under 120 words.
 - Output strictly valid JSON matching the schema.
 
-User Goal:
-{user_goal}
+User Goal: {user_goal}
 
-Evaluator Findings:
-{evaluation_result}
+Relevant Long-Term Info (RAG):
+{rag_context}
 
-Compressed Research Summary:
-{compressed_context}
+Current Knowledge State:
+{current_context}
+
+Evaluator Score:
+{evaluation_score}
 """

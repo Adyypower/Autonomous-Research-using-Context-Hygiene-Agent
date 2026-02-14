@@ -9,3 +9,6 @@ python-dotenv
 DDGS
 tavily-python
 sentence-transformers
+langchain-chroma
+langchain-tavily
+ddgs

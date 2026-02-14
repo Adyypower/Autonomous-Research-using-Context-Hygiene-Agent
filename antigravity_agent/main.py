@@ -46,7 +46,7 @@ if __name__ == "__main__":
     graph = build_graph()
 
     initial_state = AgentState(
-        user_goal="Research impact of agentic AI in healthcare"
+        user_goal="Research impact of agentic AI in Artificial Intelligence sector"
     )
 
     result = graph.invoke(initial_state)

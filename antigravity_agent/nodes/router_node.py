@@ -21,18 +21,18 @@ def router_node(state: AgentState):
 
     # --- 1️⃣ Hard Stop: High Confidence ---
     if evaluator_conf >= CONFIDENCE_THRESHOLD:
-        print("High evaluator confidence. Ending process.")
-        return "end"
+        print("High evaluator confidence. Generating Report.")
+        return "report"
 
     # --- 2️⃣ Hard Stop: Reflection Accepts ---
     if reflection_decision == "accept":
-        print("Reflection accepted output. Ending process.")
-        return "end"
+        print("Reflection accepted output. Generating Report.")
+        return "report"
 
     # --- 3️⃣ Hard Stop: Max Iterations Reached ---
     if state.iteration_count >= MAX_ITERATIONS:
-        print("Max iterations reached. Ending process.")
-        return "end"
+        print("Max iterations reached. Generating Report.")
+        return "report"
 
     # --- 4️⃣ Refinement Path (Surgical Mode) ---
     if reflection_decision == "refine" and refinement_queries:
@@ -40,5 +40,5 @@ def router_node(state: AgentState):
         return "retrieve"
 
     # --- 5️⃣ Fallback ---
-    print("Fallback to ending process.")
-    return "end"
+    print("Fallback to generating report.")
+    return "report"

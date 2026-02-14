@@ -1,6 +1,6 @@
 from langchain_community.document_loaders import TextLoader
 from langchain_text_splitters import TokenTextSplitter
-from langchain_community.vectorstores import Chroma
+from langchain_chroma import Chroma
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_core.documents import Document
 import os
@@ -20,6 +20,8 @@ class ChromaStore:
         )
 
     def add_documents(self, documents):
+        if not documents:
+            return
         self.vectorstore.add_documents(documents)
         # self.vectorstore.persist() # Deprecated in Chroma 0.4.x
 

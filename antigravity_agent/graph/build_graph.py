@@ -8,6 +8,7 @@ from nodes.evaluator_node import evaluator_node
 from nodes.reflection_node import reflection_node
 from nodes.router_node import router_node
 from nodes.retrieval_node import retrieval_node
+from nodes.reporter_node import reporter_node
 
 def build_graph():
 
@@ -19,6 +20,7 @@ def build_graph():
     workflow.add_node("evaluate", evaluator_node)
     workflow.add_node("reflect", reflection_node)
     workflow.add_node("retrieve", retrieval_node)
+    workflow.add_node("reporter", reporter_node)
 
     workflow.set_entry_point("planner")
 
@@ -27,13 +29,15 @@ def build_graph():
     workflow.add_edge("hygiene", "evaluate")
     workflow.add_edge("evaluate", "reflect")
     workflow.add_edge("retrieve", "research")
+    workflow.add_edge("reporter", END)
 
     workflow.add_conditional_edges(
         "reflect",
         router_node,
         {
             "retrieve": "retrieve",
-            "end": END
+            "report": "reporter",
+            "end": END # Safety fallback
         }
     )
 

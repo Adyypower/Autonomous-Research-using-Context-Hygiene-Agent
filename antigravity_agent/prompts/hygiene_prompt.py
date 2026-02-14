@@ -22,6 +22,9 @@ User Goal:
 Previous Knowledge:
 {previous_context}
 
+Relevant Long-Term Memory (RAG):
+{rag_context}
+
 New Research Content:
 {research_content}
 """

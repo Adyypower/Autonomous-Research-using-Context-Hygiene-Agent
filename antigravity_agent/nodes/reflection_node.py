@@ -20,12 +20,21 @@ def reflection_node(state: AgentState):
     if not state.compressed_context:
         return state
 
+    from config import MAX_RAG_CONTENT_CHARS, memory_manager # Lazy import
+
+    # --- RAG check for Reflection ---
+    rag_docs = memory_manager.retrieve(state.user_goal, top_k=3)
+    rag_context = "\n".join(rag_docs)
+    rag_context = rag_context[:MAX_RAG_CONTENT_CHARS]
+    
+    if not rag_docs:
+        rag_context = "No relevant memory found."
+
     prompt = REFLECTION_PROMPT.format(
         user_goal=state.user_goal,
-        evaluation_result={
-            "evaluation_score": state.evaluation_score,
-        },
-        compressed_context=state.compressed_context
+        rag_context=rag_context,
+        current_context=state.compressed_context, # Renamed for clarity in prompt
+        evaluation_score=state.evaluation_score # Pass evaluation score directly
     )
 
     try:
