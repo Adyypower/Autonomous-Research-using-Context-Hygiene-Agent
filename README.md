@@ -2,90 +2,104 @@
 
 ![Agent Graph](agent_graph.png)
 
-> **"Probabilistic Intelligence, Deterministic Control."**
+“Probabilistic Intelligence, Deterministic Control.”
 
-**Antigravity** is an autonomous AI agent designed for deep, recursive research. Unlike standard chatbots that hallucinate or lose context during long tasks, Antigravity uses a strict, deterministic graph architecture to plan, execute, value, and refine its own work.
+This repository contains an Autonomous Agentic Research System — a structured AI agent designed for deep, recursive research tasks.
+Unlike standard chatbots that lose context or hallucinate under complex workloads, this system uses a deterministic graph architecture to plan, execute, evaluate, and refine its outputs in a controlled pipeline.
 
-Built by **Aditya**.
+Built by Aditya.
 
----
+🏗️ System Architecture
 
-## 🏗️ System Architecture
+This system is built on LangGraph, treating large language models as components in a larger state machine — not as autonomous thinkers.
 
-The system is built on **LangGraph**, treating the LLM not as a brain, but as a component in a larger state machine. 
+The Cyclic Execution Graph
 
-### The Cyclic Graph
-The agent operates in a continuous loop:
+The agent progresses through a repeating loop where each step has a clearly defined role:
 
-1.  **Planner Node:** break down the user's high-level goal into a step-by-step research plan.
-2.  **Research Node:** Executes web searches using privacy-focused tools (DuckDuckGo).
-3.  **Hygiene Node:** Compresses raw search noise into structured JSON data.
-4.  **Evaluator Node:** Mathematically scores the relevance of findings.
-5.  **Reflection Node:** Critiques the findings and decides whether to loop back or finish.
-6.  **Retrieval Node:** Fetches long-term memories from the Vector Store.
-7.  **Reporter Node:** Compiles the final report.
+Planner Node: Breaks the user’s high-level request into specific ordered sub-tasks.
 
----
+Research Node: Executes targeted web searches (e.g., via DuckDuckGo Search).
 
-## 🚀 Unique Features
+Hygiene Node: Cleans and structures raw text into JSON.
 
-### 1. Context Hygiene (The "Secret Sauce")
-Most agents fail because they stuff their context window with 20,000+ characters of raw HTML.
-Antigravity uses a dedicated **Hygiene Node** that passes all raw research through a **Structure-Aware LLM**.
--   **Input:** 15,000 chars of noise.
--   **Output:** ~500 chars of strict JSON (Key Findings, Statistics, Risks).
--   **Result:** 90% reduction in token costs and massively improved focus.
+Evaluator Node: Applies rule-based scoring to validate the result.
 
-### 2. Deterministic vs. Probabilistic
-We impose **Deterministic Guardrails** on **Probabilistic Models**.
--   **Probabilistic:** The LLM generates the content.
--   **Deterministic:** The Code controls the flow.
-The agent *cannot* skip steps. It *must* evaluate its work. If the score is low, the code forces a retry, preventing lazy answers.
+Reflection Node: Uses LLM critique to decide whether to reuse results or retry.
 
-### 3. Model Agnostic
-Currently powered by **Gemini 2.5 Flash**, but the architecture allows instant switching to GPT-4, Claude 3.5 Sonnet, or local Llama 3 models.
+Retrieval Node: Pulls relevant long-term knowledge from vector memory.
 
----
+Reporter Node: Generates the final verified report.
 
-## 🧠 Memory Handling (RAG)
+This structured flow enforces control and accountability at every step.
 
-Antigravity separates memory into:
-1.  **Working Memory:** The active context for the current loop.
-2.  **Long-Term Memory:** A **Vector Store (ChromaDB)**.
+🚀 Unique Features
+🧹 1. Context Hygiene (Signal Amplification)
 
-Every verified fact is embedded and stored. When the agent needs to answer a follow-up question 50 steps later, it runs a semantic search against ChromaDB to retrieve the exact answer without cluttering its active context.
+Most autonomous systems fail because they overload the model with raw HTML and unstructured search data. This system uses a dedicated Hygiene Node that:
 
----
+Takes large, noisy input (e.g., ~15,000 characters of raw text),
 
-## 🛠️ Installation & Usage
+Outputs clean, strict JSON with relevant fields (e.g., key_findings, statistics, risks),
 
-1.  **Clone the Repository**
-    ```bash
-    git clone https://github.com/Adyypower/MediAgent-System-.git
-    cd antigravity_agent
-    ```
+Reduces token noise by ~90%, improving reasoning focus.
 
-2.  **Install Dependencies**
-    ```bash
-    pip install -r requirements.txt
-    ```
+This ensures the model works with signal, not clutter.
 
-3.  **Run the Web UI**
-    ```bash
-    streamlit run antigravity_agent/app.py
-    ```
+🧠 2. Deterministic Control on Probabilistic Models
 
-4.  **Run in CLI Mode**
-    ```bash
-    python antigravity_agent/main.py
-    ```
+We explicitly separate:
 
----
+Probabilistic: Content generation done by the LLM
 
-## 🔮 Future Plans
--   **Multi-Agent Swarm:** Separate 'Critic' and 'Writer' agents.
--   **Human-in-the-Loop:** UI for manual plan approval.
--   **Local Execution:** Full offline support with Ollama.
+Deterministic: Workflow and logic controlled by code
 
----
-*Built with ❤️ by Aditya*
+This means the agent cannot skip steps or proceed on low confidence. If an output scores poorly, the system loops back and refines it — no guesswork allowed.
+
+🧩 3. Model-Agnostic Design
+
+While currently configured to use Gemini 2.5 Flash, the architecture allows swapping any supported model, including:
+
+GPT-4
+
+Claude 3.5 Sonnet
+
+Local models (Llama, Ollama, etc.)
+
+The control flow stays the same regardless of model choice.
+
+🧠 Memory Handling (RAG)
+
+To simulate long-term memory:
+
+Working Memory captures transient context within the current loop.
+
+Long-Term Memory sits in a ChromaDB vector store.
+
+Verified facts are embedded and stored in memory. When a follow-up question arises many steps later, the system performs a semantic retrieval (RAG) from ChromaDB — giving focused, relevant context without context window clutter.
+
+This gives the system effectively infinite recall.
+
+🛠️ Installation & Usage
+1. Clone the Repository
+git clone https://github.com/Adyypower/Autonomous-Research-using-Context-Hygiene-Agent.git
+cd Autonomous-Research-using-Context-Hygiene-Agent
+
+2. Install Dependencies
+pip install -r requirements.txt
+
+3. Run the Web UI
+streamlit run antigravity_agent/app.py
+
+4. Run in CLI Mode
+python antigravity_agent/main.py
+
+🔮 Future Plans
+
+Multi-Agent Swarm: Separate Critic & Writer agents
+
+Human-In-The-Loop: Manual plan approval via UI
+
+Local Execution: Full offline support with Ollama or local embeddings
+
+Built with ❤️ by Aditya
