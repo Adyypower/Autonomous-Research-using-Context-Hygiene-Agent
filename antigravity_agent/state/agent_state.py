@@ -8,7 +8,7 @@ class AgentState(BaseModel):
     research_plan: List[str] = Field(default_factory=list)
     tool_results: List[str] = Field(default_factory=list)
     working_memory: List[str]
-    final_report: str = Field(default_factory=list)
+    final_report: str = Field(default="")
 
     compressed_context: Optional[Dict[str, Any]] = None
 
