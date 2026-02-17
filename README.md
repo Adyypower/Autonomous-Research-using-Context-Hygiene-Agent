@@ -80,20 +80,6 @@ Verified facts are embedded and stored in memory. When a follow-up question aris
 
 This gives the system effectively infinite recall.
 
-🛠️ Installation & Usage
-1. Clone the Repository
-git clone https://github.com/Adyypower/Autonomous-Research-using-Context-Hygiene-Agent.git
-cd Autonomous-Research-using-Context-Hygiene-Agent
-
-2. Install Dependencies
-pip install -r requirements.txt
-
-3. Run the Web UI
-streamlit run antigravity_agent/app.py
-
-4. Run in CLI Mode
-python antigravity_agent/main.py
-
 🔮 Future Plans
 
 Multi-Agent Swarm: Separate Critic & Writer agents
