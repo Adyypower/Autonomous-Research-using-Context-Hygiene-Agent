@@ -10,13 +10,10 @@ from nodes.router_node import router_node
 from nodes.retrieval_node import retrieval_node
 from nodes.reporter_node import reporter_node
 
-from langgraph.checkpoint.memory import MemorySaver
-
 def build_graph():
 
     workflow = StateGraph(AgentState)
-    
-    # ... adds nodes ...
+
     workflow.add_node("planner", planner_node)
     workflow.add_node("research", research_node)
     workflow.add_node("hygiene", hygiene_node)
@@ -40,14 +37,8 @@ def build_graph():
         {
             "retrieve": "retrieve",
             "report": "reporter",
-            "end": END 
+            "end": END # Safety fallback
         }
     )
 
-    # Add Checkpointer for HITL
-    memory = MemorySaver()
-    
-    return workflow.compile(
-        checkpointer=memory,
-        interrupt_after=["planner"]
-    )
+    return workflow.compile()

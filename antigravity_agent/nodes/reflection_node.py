@@ -48,13 +48,6 @@ def reflection_node(state: AgentState):
     state.reflection_notes = reflection_data
     state.confidence_score = reflection_data["updated_confidence"]
 
-    # Observability Log
-    state.logs.append({
-        "node": "reflection",
-        "decision": reflection_data.get('final_decision', 'unknown'),
-        "refinements": reflection_data.get('refinement_queries', [])
-    })
-
     print(f"Decision: {reflection_data['final_decision']}")
 
     # --- Crucial Fix: Update state here for persistence ---

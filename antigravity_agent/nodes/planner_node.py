@@ -21,20 +21,13 @@ def planner_node(state: AgentState):
         state.research_plan = [state.user_goal]
         return state
 
-    MAX_TASKS = 4
+    MAX_TASKS = 5
 
     tasks = response.sub_tasks[:MAX_TASKS]
     tasks = [t.strip()[:120] for t in tasks if t.strip()]
     tasks = list(dict.fromkeys(tasks))
 
     state.research_plan = tasks
-
-    # Observability Log
-    state.logs.append({
-        "node": "planner",
-        "input": state.user_goal,
-        "output": tasks
-    })
 
     print(f"Generated {len(tasks)} sub tasks")
     for t in tasks:

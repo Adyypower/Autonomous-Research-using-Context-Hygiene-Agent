@@ -20,10 +20,4 @@ def retrieval_node(state: AgentState):
         print(f"Retrieved {len(retrieved)} memory documents.")
         state.tool_results.extend(retrieved)
 
-    # Observability Log
-    state.logs.append({
-        "node": "retrieval",
-        "docs_retrieved": len(retrieved)
-    })
-
     return state
