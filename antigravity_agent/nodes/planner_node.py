@@ -29,6 +29,13 @@ def planner_node(state: AgentState):
 
     state.research_plan = tasks
 
+    # Observability Log
+    state.logs.append({
+        "node": "planner",
+        "input": state.user_goal,
+        "output": tasks
+    })
+
     print(f"Generated {len(tasks)} sub tasks")
     for t in tasks:
         print(f"- {t}")

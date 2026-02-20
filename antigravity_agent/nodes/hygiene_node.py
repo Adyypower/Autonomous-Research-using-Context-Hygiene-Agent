@@ -66,6 +66,15 @@ def hygiene_node(state: AgentState):
     import json
     state.working_memory = [json.dumps(compressed)]
     state.tool_results = []
+    
+    # Observability Log
+    state.logs.append({
+        "node": "hygiene",
+        "raw_chars": len(raw_content),
+        "rag_chars": len(rag_context),
+        "findings_count": len(response.key_findings)
+    })
+
     print(f"Context compressed. Raw: {len(raw_content)} chars, RAG: {len(rag_context)} chars.")
 
     return state

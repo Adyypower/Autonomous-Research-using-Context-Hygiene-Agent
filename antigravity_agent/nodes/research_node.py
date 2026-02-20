@@ -27,4 +27,12 @@ def research_node(state: AgentState):
         query=str(state.research_plan),
         iteration=state.iteration_count
     )
+    # Observability Log
+    state.logs.append({
+        "node": "research",
+        "query": str(state.research_plan),
+        "tool": "search_web",
+        "result_length": sum(len(c) for c in collected)
+    })
+
     return state
