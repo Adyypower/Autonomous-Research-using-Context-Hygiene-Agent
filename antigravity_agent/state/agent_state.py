@@ -19,3 +19,6 @@ class AgentState(BaseModel):
 
     iteration_count: int = 0
     api_calls_used: int = 0
+
+    logs: List[Dict[str, Any]] = Field(default_factory=list)
+    is_plan_approved: bool = False

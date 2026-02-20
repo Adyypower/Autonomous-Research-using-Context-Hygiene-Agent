@@ -6,7 +6,7 @@ def research_node(state: AgentState):
 
     print("--- Research Node ---")
 
-    MAX_SEARCH = 3
+    MAX_SEARCH = 6
 
     collected = []
 
@@ -20,6 +20,16 @@ def research_node(state: AgentState):
 
     state.tool_results = collected
     state.working_memory.extend(collected)
+
+    # Observability Log
+    for i, query in enumerate(state.research_plan[:MAX_SEARCH]):
+        res_len = len(collected[i]) if i < len(collected) else 0
+        state.logs.append({
+            "node": "research",
+            "query": query,
+            "tool": "search_web",
+            "result_length": res_len
+        })
 
     # long term memory storage
     memory_manager.store_raw_results(

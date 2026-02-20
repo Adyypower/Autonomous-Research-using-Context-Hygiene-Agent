@@ -37,6 +37,14 @@ def evaluator_node(state: AgentState):
     state.evaluation_score = scores["overall_confidence"]
     state.confidence_score = scores["overall_confidence"]
 
+    # Observability Log
+    state.logs.append({
+        "node": "evaluator",
+        "relevance": response.relevance_score,
+        "completeness": response.completeness_score,
+        "gaps": response.major_gaps
+    })
+
     print(f"Evaluation Score: {state.confidence_score}")
 
     return state

@@ -2,10 +2,10 @@ PLANNER_PROMPT = """
 You are a task decomposition engine for a research agent.
 
 Your job:
-Break the user goal into 3 to 5 high-level searchable sub-tasks.
+Break the user goal into 3 to 4 high-level searchable sub-tasks.
 
 STRICT RULES:
-- Maximum 5 sub_tasks.
+- Maximum 4 sub_tasks.
 - Each sub_task must be a single short sentence (max 15 words).
 - No numbering.
 - No explanations.

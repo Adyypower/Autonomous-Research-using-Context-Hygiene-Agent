@@ -41,4 +41,11 @@ def reporter_node(state: AgentState):
         print(f"Reporter error: {e}")
 
     state.final_report = final_report
+
+    # Observability Log
+    state.logs.append({
+        "node": "reporter",
+        "status": "Final Report Generated"
+    })
+
     return state
